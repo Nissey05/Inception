@@ -1,7 +1,25 @@
 services:
   mariadb:
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
 
-  nginx:
+  # nginx:
 
-  wordpress:
+  # wordpress:
     
+volumes:
+  mariadb_data:
+
+networks:
+  inception:
+    driver: bridge

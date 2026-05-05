@@ -1,3 +1,7 @@
+-- Allow root to connect from any host
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 -- Create a new database
 
 CREATE DATABASE IF NOT EXISTS my_database;
