@@ -1,34 +1,10 @@
--- Allow root to connect from any host
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS __MYSQL_DATABASE__;
+
+USE __MYSQL_DATABASE__;
+
+CREATE USER IF NOT EXISTS '__MYSQL_USER__'@'%' IDENTIFIED BY '__MYSQL_PASSWORD__';
+GRANT ALL PRIVILEGES ON __MYSQL_DATABASE__.* TO '__MYSQL_USER__'@'%' WITH GRANT OPTION;
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY '__MYSQL_ROOT_PASSWORD__';
+
 FLUSH PRIVILEGES;
-
--- Create a new database
-
-CREATE DATABASE IF NOT EXISTS my_database;
-
--- Switch to the new database
-
-USE my_database;
-
--- Create a new table
-CREATE TABLE users (
-
-   id INT AUTO_INCREMENT PRIMARY KEY,
-
-   name VARCHAR(100) NOT NULL,
-
-   email VARCHAR(100) NOT NULL UNIQUE,
-
-   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-);
-
--- Insert some sample data into the table
-
-INSERT INTO users (name, email) VALUES
-
-('Alice Smith', 'alice@example.com'),
-
-('Bob Johnson', 'bob@example.com'),
-
-('Charlie Brown', 'charlie@example.com');	
