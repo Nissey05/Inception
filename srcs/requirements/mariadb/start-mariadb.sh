@@ -3,10 +3,6 @@
 DATADIR=/var/lib/mysql
 INITDB=/docker-entrypoint-initdb.d/init-db.sql
 
-# Prepare runtime directory
-mkdir -p /run/mysqld
-chown -R mysql:mysql /run/mysqld
-
 # Prepare initialization database with environment variable substitution
 if [ -f /docker-entrypoint-initdb.d/init-db.sql ]; then
 	sed -i \
