@@ -17,7 +17,7 @@ HEALTHCHECK --start-period=10s --interval=5s --timeout=3s --retries=3 \
 COPY conf/mariadb.conf /etc/mysql/mariadb.conf
 COPY conf/init-db.sql /docker-entrypoint-initdb.d/
 RUN chmod 755 /docker-entrypoint-initdb.d/
-COPY start-mariadb.sh /usr/local/bin/
+COPY tools/start-mariadb.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start-mariadb.sh
 
 CMD ["/usr/local/bin/start-mariadb.sh"]

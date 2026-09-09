@@ -11,7 +11,7 @@ LABEL version="1.0"
 LABEL description="Nginx Server"
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY start-nginx.sh /usr/local/bin/
+COPY tools/start-nginx.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start-nginx.sh
 
 ENTRYPOINT ["/usr/local/bin/start-nginx.sh"]
